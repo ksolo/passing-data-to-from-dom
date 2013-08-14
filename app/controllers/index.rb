@@ -11,7 +11,8 @@ post '/rolls' do
   @roll = value ? Roll.create({ value: value }) : Roll.create
 
   if request.xhr?
-    erb :_die_img, layout: false
+    content_type :json
+    @roll.to_json
   else
     erb :index  # HINT: what does this do? what should we do instead?
   end

@@ -11,9 +11,14 @@ $(document).ready(function () {
     event.preventDefault();
     var url = $(this).attr('action');
 
-    $.post(url, function(response){
-      $('#die').html(response);
-    });
+    $.post(url, function(rollObject){
+      console.log(rollObject);
+      $('#die').html(dieTemplate(rollObject));
+
+      function dieTemplate(rollObject) {
+        return "<img src='" + rollObject.roll.value +".png' title='" + rollObject.roll.value + "' alt='the roll'>"
+      }
+    }, "json");
   });
 
 });
