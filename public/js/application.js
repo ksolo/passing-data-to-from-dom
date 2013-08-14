@@ -10,8 +10,9 @@ $(document).ready(function () {
   $('form').on('submit', function(event){
     event.preventDefault();
     var url = $(this).attr('action');
+    var data = { value: $(this).data('value') };
 
-    $.post(url, function(response){
+    $.post(url, data, function(response){
       $('#die').html(response);
     });
   });
